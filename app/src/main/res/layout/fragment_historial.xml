@@ -4,51 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.consultar.ConsutarFragment"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context=".ui.historial.HistorialFragment">
+
+    <!-- Logo Images -->
+
+    <!-- Table Layout -->
 
     <ImageView
         android:id="@+id/imageViewLogo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="445dp"
+        android:layout_height="66dp"
         android:scaleType="centerInside"
         android:src="@drawable/logonegro"
-        app:layout_constraintBottom_toTopOf="@id/tableLayout2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintWidth_percent="0.5" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="445dp"
+        android:layout_height="66dp"
         android:scaleType="centerInside"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@id/tableLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintWidth_percent="0.5" />
-
-    <EditText
-        android:id="@+id/txtCedula"
-        android:layout_width="218dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/table_border2"
-        android:ems="10"
-        android:hint="Digite Su Cedula:"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewLogo" />
 
     <TableLayout
         android:id="@+id/tableLayout2"
@@ -58,7 +45,7 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtCedula"
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogo"
         app:layout_constraintWidth_percent="0.9">
 
         <!-- Header Row -->
@@ -103,48 +90,18 @@
                 android:text="Total"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
-
         </TableRow>
     </TableLayout>
 
-    <!-- Add a RecyclerView to display the table data -->
-
-    <!-- Result TextView for displaying API response -->
-
-
-    <TextView
-        android:id="@+id/txtCliente"
-        android:layout_width="263dp"
-        android:layout_height="161dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
-        app:layout_constraintVertical_bias="0.044" />
-
-    <TextView
-        android:id="@+id/txtServicio"
-        android:layout_width="315dp"
-        android:layout_height="122dp"
-        android:textSize="16sp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCliente"
-        tools:ignore="DuplicateIds" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="229dp"
-        android:layout_height="63dp"
-        android:layout_marginBottom="48dp"
-        android:text="Consultar"
-        android:textSize="20sp"
-        app:icon="@drawable/icon_car"
+    <!-- RecyclerView to display table data -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewData"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tableLayout2"
+        app:layout_constraintWidth_percent="0.9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

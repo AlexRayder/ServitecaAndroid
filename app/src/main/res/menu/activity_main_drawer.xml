@@ -12,17 +12,16 @@
             android:id="@+id/nav_Consultar"
             android:icon="@drawable/nav_consultarservi"
             android:title="Consultar Servicio"/>
+        <item
+            android:id="@+id/nav_historial"
+            android:icon="@drawable/baseline_history_24"
+            android:title="Historial" />
 
 
     </group>
 
-    <item
-        android:title="">
+    <item android:title="TODO">
         <menu>
-            <item
-                android:id="@+id/nav_gallery"
-                android:icon="@drawable/nav_share"
-                android:title="Share" />
             <item
                 android:id="@+id/nav_slideshow"
                 android:icon="@drawable/nav_info"

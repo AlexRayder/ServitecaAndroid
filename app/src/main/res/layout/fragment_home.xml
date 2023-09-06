@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,221 +8,180 @@
     android:layout_centerHorizontal="true"
     tools:context=".ui.home.HomeFragment">
 
-
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.971" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Servicio que Ofrecemos :D"
+        android:text="Nuestros Servicios :D"
         android:textSize="20dp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/text_home"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="190dp"
-        android:layout_height="96dp"
-        android:contentDescription="@string/nav_header_desc"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:layout_constraintBottom_toTopOf="@+id/text_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.034"
-        app:srcCompat="@drawable/logo" />
+        app:layout_constraintVertical_bias="0.024" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="402dp"
-        android:layout_height="230dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/text_home"
+
+    <!-- ScrollView para el contenido de las cartas -->
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.052">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="4dp"
-            android:layout_height="175dp"
-            android:layout_margin="20dp"
-            android:layout_weight="1">
 
-            <RelativeLayout
+        <!-- LinearLayout vertical para organizar las cartas -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Carta 1 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView1"
                 android:layout_width="match_parent"
-                android:layout_height="171dp">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="143dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/imageView5"
-                    android:layout_alignBottom="@+id/imageView5"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="-8dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginBottom="-12dp"
-                    android:text="Cambio De Aceite"
-                    android:textSize="18sp"
-                    android:textStyle="bold|italic" />
+                <!-- Contenido de la Carta 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="150dp"
-                    android:layout_height="140dp"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/balanceo" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+                    <!-- Imagen de la Carta 1 -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/bujias" />
 
+                    <!-- Título de la Carta 1 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cambio de Bujías"
+                        android:textSize="30sp"
+                        android:textStyle="bold|italic" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="4dp"
-            android:layout_height="175dp"
-            android:layout_margin="20dp"
-            android:layout_weight="1">
-
-            <RelativeLayout
+            <!-- Carta 2 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="143dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/imageView3"
-                    android:layout_alignBottom="@+id/imageView3"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="-8dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginBottom="-16dp"
-                    android:text="Cambio De Aceite"
-                    android:textSize="18sp"
-                    android:textStyle="bold|italic" />
+                <!-- Contenido de la Carta 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="150dp"
-                    android:layout_height="140dp"
-                    android:layout_centerInParent="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/aceite" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+                    <!-- Imagen de la Carta 2 -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/bateria" />
 
-    </LinearLayout>
+                    <!-- Título de la Carta 2 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cambio de Bateria"
+                        android:textSize="30sp"
+                        android:textStyle="bold|italic" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-    <LinearLayout
-        android:layout_width="402dp"
-        android:layout_height="230dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/text_home"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="4dp">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="4dp"
-            android:layout_height="175dp"
-            android:layout_margin="20dp"
-            android:layout_weight="1">
-
-            <RelativeLayout
+            <!-- Carta 3 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
                 android:layout_width="match_parent"
-                android:layout_height="171dp">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="143dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/imageView7"
-                    android:layout_alignBottom="@+id/imageView7"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="-8dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginBottom="-12dp"
-                    android:text="Cambio De Aceite"
-                    android:textSize="18sp"
-                    android:textStyle="bold|italic" />
+                <!-- Contenido de la Carta 3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="150dp"
-                    android:layout_height="140dp"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/balanceo" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+                    <!-- Imagen de la Carta 3 -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/balanceo" />
 
+                    <!-- Título de la Carta 3 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alineación y Balanceo"
+                        android:textSize="30sp"
+                        android:textStyle="bold|italic" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="4dp"
-            android:layout_height="175dp"
-            android:layout_margin="20dp"
-            android:layout_weight="1">
-
-            <RelativeLayout
+            <!-- Carta 4 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="143dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/imageView8"
-                    android:layout_alignBottom="@+id/imageView8"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginTop="-8dp"
-                    android:layout_marginEnd="7dp"
-                    android:layout_marginBottom="-15dp"
-                    android:text="Cambio De Aceite"
-                    android:textSize="18sp"
-                    android:textStyle="bold|italic" />
+                <!-- Contenido de la Carta 4 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="150dp"
-                    android:layout_height="140dp"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/aceite" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-    </LinearLayout>
+                    <!-- Imagen de la Carta 4 -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/aceite" />
 
+                    <!-- Título de la Carta 4 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cambio de Aceite"
+                        android:textSize="30sp"
+                        android:textStyle="bold|italic" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
