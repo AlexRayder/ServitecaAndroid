@@ -81,51 +81,56 @@ class ConsutarFragment : Fragment() {
                 if (response.isSuccessful) {
                     val serviceModels = response.body()
                     if (serviceModels != null && serviceModels.isNotEmpty()) {
-                        // Verifica si el cliente con la identificación existe
                         val clienteEncontrado = serviceModels.find { it.perIdentificacion == cedula }
                         if (clienteEncontrado != null) {
                             // Mostrar los datos del cliente en el TextView
                             txtCliente.text = "Cliente encontrado:\n" +
-                                    "Nombre: ${clienteEncontrado.perNombres} ${clienteEncontrado.perApellidos}\n" +
+                                    "Nombre: ${clienteEncontrado.perNombres} ${clienteEncontrado.perApellidos}\n" + // Usar serpCliNombre
                                     "Correo: ${clienteEncontrado.perCorreo}\n" +
                                     "Número de celular: ${clienteEncontrado.perNumeroCelular}"
+
+                            // Ahora puedes realizar la solicitud para obtener el servicio prestado usando el ID del servicio prestado
+                            val callServicio = apiService.getServicePrestadoById(clienteEncontrado.id)
+                            callServicio.enqueue(object : Callback<ServicioPrestado> {
+                                override fun onResponse(call: Call<ServicioPrestado>, response: Response<ServicioPrestado>) {
+                                    if (response.isSuccessful) {
+                                        val servicioPrestado = response.body()
+                                        if (servicioPrestado != null) {
+                                            // Mostrar los datos del servicio en el TextView
+                                            txtServicio.text = "SerpCli: ${servicioPrestado.serpCli}\n" + // Usar serpCliNombre
+                                                    "SerpVehi: ${servicioPrestado.serpVehi}\n" +
+                                                    "SerpEstado: ${servicioPrestado.serpEstado}\n" +
+                                                    "SerpObservaciones: ${servicioPrestado.serpObservaciones}\n" +
+                                                    "SerpFechaServicio: ${servicioPrestado.serpFechaServicio}"
+                                        } else {
+                                            txtServicio.text = "Servicio Prestado no encontrado."
+                                        }
+                                    } else {
+                                        txtServicio.text = "Error en la respuesta de la API del servicio."
+                                    }
+                                }
+
+                                override fun onFailure(call: Call<ServicioPrestado>, t: Throwable) {
+                                    txtServicio.text = "Error al realizar la solicitud del servicio."
+                                }
+                            })
                         } else {
                             txtCliente.text = "Cliente no encontrado."
+                            txtServicio.text = "" // Limpia el TextView de servicio si no se encuentra el cliente
                         }
                     } else {
                         txtCliente.text = "Cliente no encontrado."
+                        txtServicio.text = "" // Limpia el TextView de servicio si no se encuentra el cliente
                     }
                 } else {
-                    txtCliente.text = "Error en la respuesta de la API."
+                    txtCliente.text = "Error en la respuesta de la API del cliente."
+                    txtServicio.text = "" // Limpia el TextView de servicio en caso de error
                 }
             }
 
             override fun onFailure(call: Call<List<ServiceModel>>, t: Throwable) {
                 txtCliente.text = "Error al realizar la solicitud del cliente."
-            }
-        })
-
-        callServicio.enqueue(object : Callback<ServicioPrestado> {
-            override fun onResponse(call: Call<ServicioPrestado>, response: Response<ServicioPrestado>) {
-                if (response.isSuccessful) {
-                    val servicioPrestado = response.body()
-                    if (servicioPrestado != null) {
-                        // Mostrar los datos del servicio en el TextView
-                        txtServicio.text = "SerpCli: ${servicioPrestado.serpCli}\n" +
-                                "SerpVehi: ${servicioPrestado.serpVehi}\n" +
-                                "SerpEstado: ${servicioPrestado.serpEstado}\n" +
-                                "SerpObservaciones: ${servicioPrestado.serpObservaciones}\n" +
-                                "SerpFechaServicio: ${servicioPrestado.serpFechaServicio}"
-                    } else {
-                        txtServicio.text = "Servicio Prestado no encontrado."
-                    }
-                } else {
-                    txtServicio.text = "Error en la respuesta de la API del servicio."
-                }
-            }
-
-            override fun onFailure(call: Call<ServicioPrestado>, t: Throwable) {
-                txtServicio.text = "Error al realizar la solicitud del servicio."
+                txtServicio.text = "" // Limpia el TextView de servicio en caso de error
             }
         })
     }

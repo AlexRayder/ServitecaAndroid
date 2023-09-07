@@ -3,10 +3,15 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+
 android {
     namespace 'com.example.serviteca'
     compileSdk 33
 
+
+    viewBinding {
+        enabled = true
+    }
     defaultConfig {
         applicationId "com.example.serviteca"
         minSdk 24
