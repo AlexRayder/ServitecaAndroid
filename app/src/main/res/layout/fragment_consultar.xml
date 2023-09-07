@@ -107,44 +107,38 @@
         </TableRow>
     </TableLayout>
 
-    <!-- Add a RecyclerView to display the table data -->
-
     <!-- Result TextView for displaying API response -->
-
-
-    <TextView
-        android:id="@+id/txtCliente"
-        android:layout_width="263dp"
-        android:layout_height="161dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
-        app:layout_constraintVertical_bias="0.044" />
-
-    <TextView
-        android:id="@+id/txtServicio"
-        android:layout_width="315dp"
-        android:layout_height="122dp"
-        android:textSize="16sp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCliente"
-        tools:ignore="DuplicateIds" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="229dp"
-        android:layout_height="63dp"
-        android:layout_marginBottom="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Consultar"
-        android:textSize="20sp"
-        app:icon="@drawable/icon_car"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Agrega el RecyclerView para mostrar la lista de servicios aquí -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewServicios"
+        android:layout_width="248dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtCliente"
+        android:layout_width="157dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="24dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewServicios" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,6 @@ data class ServiceModel(
     val perIdentificacion: String,
     val perNombres: String,
     val perApellidos: String,
-    val perCorreo: String?,
-    val perNumeroCelular: String,
+    val perCorreo: String,
+    val perNumeroCelular: String
 )

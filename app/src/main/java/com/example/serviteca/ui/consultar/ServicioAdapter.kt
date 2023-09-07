@@ -1,38 +1,35 @@
-package com.example.serviteca.ui.consultar
+    package com.example.serviteca.ui.consultar
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import com.example.serviteca.R
+    import android.view.LayoutInflater
+    import android.view.View
+    import android.view.ViewGroup
+    import android.widget.TextView
+    import androidx.recyclerview.widget.RecyclerView
+    import com.example.serviteca.R
 
-class ServicioAdapter(private val servicioList: List<ServicioPrestado>) : RecyclerView.Adapter<ServicioAdapter.ViewHolder>() {
+    class ServicioAdapter(private val serviciosList: MutableList<ServicioPrestado>) :
+        RecyclerView.Adapter<ServicioAdapter.ServicioViewHolder>() {
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val serpCliTextView: TextView = itemView.findViewById(R.id.serpCliTextView)
-        val serpVehiTextView: TextView = itemView.findViewById(R.id.serpVehiTextView)
-        val serpEstadoTextView: TextView = itemView.findViewById(R.id.serpEstadoTextView)
-        val serpObservacionesTextView: TextView = itemView.findViewById(R.id.serpObservacionesTextView)
-        val serpFechaServicioTextView: TextView = itemView.findViewById(R.id.serpFechaServicioTextView)
+        inner class ServicioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            val servicioTextView: TextView = itemView.findViewById(R.id.servicioTextView)
+            val fechaTextView: TextView = itemView.findViewById(R.id.fechaTextView)
+            val estadoTextView: TextView = itemView.findViewById(R.id.estadoTextView)
+            val totalTextView: TextView = itemView.findViewById(R.id.totalTextView)
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServicioViewHolder {
+            val itemView = LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_servicio, parent, false)
+            return ServicioViewHolder(itemView)
+        }
+
+        override fun onBindViewHolder(holder: ServicioViewHolder, position: Int) {
+            val currentItem = serviciosList[position]
+            holder.servicioTextView.text = currentItem.serpCli.toString() // Cambia a la propiedad correcta del servicio
+            holder.fechaTextView.text = currentItem.serpFechaServicio
+            holder.estadoTextView.text = currentItem.serpEstado
+            holder.totalTextView.text = currentItem.serpObservaciones.toString()
+        }
+
+        override fun getItemCount() = serviciosList.size
     }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_servicio, parent, false)
-        return ViewHolder(itemView)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val servicio = servicioList[position]
-
-        holder.serpCliTextView.text = "SerpCli: ${servicio.serpCli}"
-        holder.serpVehiTextView.text = "SerpVehi: ${servicio.serpVehi}"
-        holder.serpEstadoTextView.text = "SerpEstado: ${servicio.serpEstado}"
-        holder.serpObservacionesTextView.text = "SerpObservaciones: ${servicio.serpObservaciones}"
-        holder.serpFechaServicioTextView.text = "SerpFechaServicio: ${servicio.serpFechaServicio}"
-    }
-
-    override fun getItemCount(): Int {
-        return servicioList.size
-    }
-}
