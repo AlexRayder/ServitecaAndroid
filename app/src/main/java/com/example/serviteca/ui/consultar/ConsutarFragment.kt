@@ -12,10 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviteca.R
 import com.example.serviteca.databinding.FragmentConsultarBinding
-import com.example.serviteca.ui.consultar.ApiService
-import com.example.serviteca.ui.consultar.ServiceModel
-import com.example.serviteca.ui.consultar.ServicioAdapter
-import com.example.serviteca.ui.consultar.ServicioPrestado
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -97,29 +93,29 @@ class ConsutarFragment : Fragment() {
 
                             // Ahora puedes realizar la solicitud para obtener los servicios prestados usando el ID del cliente
                             val callServicio = apiService.getServicePrestadoById(clienteEncontrado.id)
-                            callServicio.enqueue(object : Callback<ServicioPrestado> {
-                                override fun onResponse(call: Call<ServicioPrestado>, response: Response<ServicioPrestado>) {
+                            callServicio.enqueue(object : Callback<List<ServicioPrestado>> {
+                                override fun onResponse(call: Call<List<ServicioPrestado>>, response: Response<List<ServicioPrestado>>) {
                                     if (response.isSuccessful) {
-                                        val servicioPrestado = response.body()
-                                        if (servicioPrestado != null) {
+                                        val serviciosPrestados = response.body()
+                                        if (serviciosPrestados != null && serviciosPrestados.isNotEmpty()) {
                                             // Limpiar la lista actual de servicios
                                             serviciosList.clear()
 
-                                            // Agregar el servicio prestado a la lista
-                                            serviciosList.add(servicioPrestado)
+                                            // Agregar los servicios prestados a la lista
+                                            serviciosList.addAll(serviciosPrestados)
 
                                             // Notificar al adaptador que los datos han cambiado
                                             servicioAdapter.notifyDataSetChanged()
                                         } else {
                                             // No se encontraron servicios prestados para este cliente
-                                            txtCliente.text = "Cliente encontrado, pero no se encontró ningún servicio prestado."
+                                            txtCliente.text = "Cliente encontrado, pero no se encontraron servicios prestados."
                                         }
                                     } else {
                                         txtCliente.text = "Error en la respuesta de la API de servicios."
                                     }
                                 }
 
-                                override fun onFailure(call: Call<ServicioPrestado>, t: Throwable) {
+                                override fun onFailure(call: Call<List<ServicioPrestado>>, t: Throwable) {
                                     txtCliente.text = "Error al realizar la solicitud de servicios."
                                 }
                             })
