@@ -1,6 +1,8 @@
 
 package com.example.serviteca
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
@@ -30,6 +32,12 @@ class MainActivity : AppCompatActivity(), ConsutarFragment.ConsultarListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Verificar la conexión a Internet
+        if (!isNetworkAvailable()) {
+            showNoInternetView()
+            return
+        }
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -58,24 +66,6 @@ class MainActivity : AppCompatActivity(), ConsutarFragment.ConsultarListener {
             .create(ApiService::class.java)
     }
 
-    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_custom_header, menu) // Infla el menú de opciones
-        return true
-    }
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menu_cliente_info -> {
-
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }*/
-
-
-
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
@@ -102,14 +92,15 @@ class MainActivity : AppCompatActivity(), ConsutarFragment.ConsultarListener {
 
         dialog.show()
     }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.logout -> {
-                finish() // Cierra la actividad actual, lo que termina la aplicación.
-                return true
-            }
-            else -> return super.onOptionsItemSelected(item)
-        }
+
+    private fun isNetworkAvailable(): Boolean {
+        val connectivityManager =
+            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetworkInfo = connectivityManager.activeNetworkInfo
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected
     }
 
+    private fun showNoInternetView() {
+        setContentView(R.layout.no_internet_layout)
+    }
 }
