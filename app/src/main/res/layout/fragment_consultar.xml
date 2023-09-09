@@ -64,15 +64,6 @@
         <!-- Header Row -->
         <TableRow android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="105dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/table_border"
-                android:gravity="center"
-                android:text="Servicio Prestado"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="0dp"
@@ -100,7 +91,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/table_border"
                 android:gravity="center"
-                android:text="Total"
+                android:text="Descripcion"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -119,26 +110,26 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Agrega el RecyclerView para mostrar la lista de servicios aquí -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewServicios"
-        android:layout_width="248dp"
-        android:layout_height="200dp"
+        android:layout_width="354dp"
+        android:layout_height="290dp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.13" />
 
     <TextView
         android:id="@+id/txtCliente"
         android:layout_width="157dp"
         android:layout_height="68dp"
-        android:layout_marginTop="24dp"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewServicios" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

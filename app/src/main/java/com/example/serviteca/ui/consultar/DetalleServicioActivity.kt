@@ -1,8 +1,11 @@
 package com.example.serviteca.ui.consultar
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
+import com.example.serviteca.MainActivity
 import com.example.serviteca.R
 import retrofit2.Call
 import retrofit2.Callback
@@ -68,5 +71,16 @@ class DetalleServicioActivity : AppCompatActivity() {
         } else {
             // Maneja el caso en el que no se proporciona un ID válido
         }
+    }
+    fun redirigirAInicio(view: View) {
+        // Redirige a la actividad de inicio
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun redirigirAConsultar(view: View) {
+        // Redirige a la actividad de consultar
+        val intent = Intent(this, ConsutarFragment::class.java)
+        startActivity(intent)
     }
 }

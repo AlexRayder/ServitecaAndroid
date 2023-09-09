@@ -23,9 +23,9 @@
     <item android:title="TODO">
         <menu>
             <item
-                android:id="@+id/nav_slideshow"
+                android:id="@+id/nav_nosotros"
                 android:icon="@drawable/nav_info"
-                android:title="About" />
+                android:title="Nosotros" />
             <item
                 android:id="@+id/logout"
                 android:icon="@drawable/nav_logout"

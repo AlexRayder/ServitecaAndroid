@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_historial" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.serviteca.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_nosotros"
+        android:name="com.example.serviteca.ui.slideshow.NosorosFragment"
+        android:label="@string/menu_nosotros"
+        tools:layout="@layout/fragment_nosotros" />
 
     <fragment
         android:id="@+id/nav_Consultar"

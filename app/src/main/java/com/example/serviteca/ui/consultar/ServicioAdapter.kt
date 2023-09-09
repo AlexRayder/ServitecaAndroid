@@ -13,7 +13,6 @@ class ServicioAdapter(
 ) : RecyclerView.Adapter<ServicioAdapter.ServicioViewHolder>() {
 
     inner class ServicioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val servicioTextView: TextView = itemView.findViewById(R.id.servicioTextView)
         val fechaTextView: TextView = itemView.findViewById(R.id.fechaTextView)
         val estadoTextView: TextView = itemView.findViewById(R.id.estadoTextView)
         val totalTextView: TextView = itemView.findViewById(R.id.totalTextView)
@@ -27,7 +26,7 @@ class ServicioAdapter(
 
     override fun onBindViewHolder(holder: ServicioViewHolder, position: Int) {
         val currentItem = serviciosList[position]
-        holder.servicioTextView.text = currentItem.serpCli.toString()
+
         holder.fechaTextView.text = currentItem.serpFechaServicio
         holder.estadoTextView.text = currentItem.serpEstado
         holder.totalTextView.text = currentItem.serpObservaciones.toString()

@@ -1,13 +1,15 @@
 package com.example.serviteca.ui.consultar
+
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviteca.R
@@ -19,6 +21,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ConsutarFragment : Fragment() {
+    interface ConsultarListener {
+        fun onClienteDataReceived(clienteInfo: ClienteModel)
+    }
+
+    lateinit var consultarListener: ConsultarListener
+
     private var _binding: FragmentConsultarBinding? = null
     private lateinit var btnConsulta: Button
     private lateinit var txtCliente: TextView
@@ -49,6 +57,11 @@ class ConsutarFragment : Fragment() {
 
         recyclerView = root.findViewById(R.id.recyclerViewServicios)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        // Agregar una línea divisoria entre los elementos del RecyclerView
+        val dividerItemDecoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+        recyclerView.addItemDecoration(dividerItemDecoration)
+
         servicioAdapter = ServicioAdapter(serviciosList) { servicio ->
             val intent = Intent(requireContext(), DetalleServicioActivity::class.java)
             intent.putExtra("servicioId", servicio.id)
@@ -66,10 +79,19 @@ class ConsutarFragment : Fragment() {
         return root
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is ConsultarListener) {
+            consultarListener = context
+        } else {
+            throw RuntimeException("$context must implement ConsultarListener")
+        }
+    }
+
     private fun fetchDataFromAPI() {
         val cedulaEditText = binding.txtCedula
         val cedula = cedulaEditText.text.toString().trim()
-
+        txtCliente.text = ""
         if (cedula.length > 10 || cedula.length < 7) {
             cedulaEditText.error = "¡La cédula no es válida!\n" +
                     "Verifique su número de cédula"
@@ -83,9 +105,18 @@ class ConsutarFragment : Fragment() {
                 if (response.isSuccessful) {
                     val cliente = response.body()
                     if (cliente != null) {
-                        txtCliente.text = "Cliente encontrado:\n" +
-                                "ID: ${cliente.id}\n" +
-                                "Dirección: ${cliente.cliDireccion}"
+                        val clienteInfo = cliente.cliPersona_info
+
+                        // Notificar a MainActivity con los datos del cliente
+                        consultarListener.onClienteDataReceived(cliente)
+
+                        // Puedes también mostrar los datos aquí en el fragmento
+                        "Cliente encontrado:\n" +
+                                "Nombres: ${clienteInfo.perNombres}\n" +
+                                "Apellidos: ${clienteInfo.perApellidos}\n" +
+                                "Correo: ${clienteInfo.perCorreo}\n" +
+                                "Dirección: ${cliente.cliDireccion}\n" +
+                                "Número de Celular: ${clienteInfo.perNumeroCelular}"
 
                         val callServicio = apiService.getServiciosPrestadosByClienteId(cedula)
                         callServicio.enqueue(object : Callback<List<ServicioPrestado>> {

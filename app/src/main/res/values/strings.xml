@@ -9,7 +9,7 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_historial">Historial</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_nosotros">¿Que somos?</string>
     <string name="menu_consultar">Consultar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
