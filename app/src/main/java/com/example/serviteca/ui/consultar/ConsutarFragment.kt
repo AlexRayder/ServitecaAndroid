@@ -127,11 +127,16 @@ class ConsutarFragment : Fragment() {
                                 if (response.isSuccessful) {
                                     val serviciosPrestados = response.body()
                                     if (serviciosPrestados != null && serviciosPrestados.isNotEmpty()) {
+                                        // Filtrar solo los servicios "Solicitados"
+                                        val filteredServicios = serviciosPrestados.filter {
+                                            it.serpEstado.equals("Solicitado", ignoreCase = true)
+                                        }
                                         serviciosList.clear()
-                                        serviciosList.addAll(serviciosPrestados)
+                                        serviciosList.addAll(filteredServicios)
                                         servicioAdapter.notifyDataSetChanged()
                                     } else {
                                         txtCliente.append("\nCliente existe pero no tiene servicios.")
+                                        serviciosList.clear()
                                         servicioAdapter.notifyDataSetChanged()
                                     }
                                 } else {
@@ -169,6 +174,7 @@ class ConsutarFragment : Fragment() {
             }
         })
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
