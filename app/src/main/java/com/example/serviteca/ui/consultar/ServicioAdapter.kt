@@ -37,4 +37,17 @@ class ServicioAdapter(
     }
 
     override fun getItemCount() = serviciosList.size
+
+    // Agregar el método para actualizar los datos
+    fun updateData(newList: List<ServicioPrestado>) {
+        serviciosList.clear()
+        serviciosList.addAll(newList)
+        notifyDataSetChanged()
+    }
+
+    // Agregar el método para limpiar los datos
+    fun clearData() {
+        serviciosList.clear()
+        notifyDataSetChanged()
+    }
 }

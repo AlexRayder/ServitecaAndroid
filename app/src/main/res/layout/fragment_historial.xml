@@ -37,6 +37,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.5" />
 
+    <EditText
+        android:id="@+id/txtCedula"
+        android:layout_width="218dp"
+        android:layout_height="39dp"
+        android:background="@drawable/table_border2"
+        android:ems="10"
+        android:hint="Digite Su Cedula:"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewHistorial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+
     <TableLayout
         android:id="@+id/tableLayout2"
         android:layout_width="0dp"
@@ -94,14 +107,35 @@
     </TableLayout>
 
     <!-- RecyclerView to display table data -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewData"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <TextView
+        android:id="@+id/txtHistorial"
+        android:layout_width="225dp"
+        android:layout_height="142dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/buttonConsultarHistorial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tableLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/txtCedula" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHistorial"
+        android:layout_width="277dp"
+        android:layout_height="296dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConsultarHistorial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
+        app:layout_constraintVertical_bias="0.746"
         app:layout_constraintWidth_percent="0.9" />
+
+    <Button
+        android:id="@+id/buttonConsultarHistorial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Historial"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

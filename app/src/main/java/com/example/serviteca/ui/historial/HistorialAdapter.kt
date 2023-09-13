@@ -9,7 +9,7 @@ import com.example.serviteca.R
 import com.example.serviteca.ui.consultar.ServicioPrestado
 
 class HistorialAdapter(
-    private val historialList: List<ServicioPrestado>,
+    private val serviciosList: MutableList<ServicioPrestado>,
     private val onItemClick: (ServicioPrestado) -> Unit
 ) : RecyclerView.Adapter<HistorialAdapter.HistorialViewHolder>() {
 
@@ -21,12 +21,12 @@ class HistorialAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistorialViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_servicio, parent, false)
+            .inflate(R.layout.item_historial, parent, false)
         return HistorialViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: HistorialViewHolder, position: Int) {
-        val currentItem = historialList[position]
+        val currentItem = serviciosList[position]
 
         holder.fechaTextView.text = currentItem.serpFechaServicio
         holder.estadoTextView.text = currentItem.serpEstado
@@ -37,5 +37,5 @@ class HistorialAdapter(
         }
     }
 
-    override fun getItemCount() = historialList.size
+    override fun getItemCount() = serviciosList.size
 }

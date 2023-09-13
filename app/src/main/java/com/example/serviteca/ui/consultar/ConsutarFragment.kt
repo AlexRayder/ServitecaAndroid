@@ -133,17 +133,16 @@ class ConsutarFragment : Fragment() {
                                         }
                                         serviciosList.clear()
                                         serviciosList.addAll(filteredServicios)
-                                        servicioAdapter.notifyDataSetChanged()
+                                        if (filteredServicios.isEmpty()) {
+                                            txtCliente.text = "Señor Usuario usted no posee por el momento un sevicio en estado 'Solicitado'."
+                                        }
                                     } else {
-                                        txtCliente.append("\nCliente existe pero no tiene servicios.")
-                                        serviciosList.clear()
-                                        servicioAdapter.notifyDataSetChanged()
+                                        txtCliente.text = "Cliente existe pero no tiene servicios."
                                     }
                                 } else {
                                     txtCliente.text = "Error en la respuesta de la API de servicios."
-                                    serviciosList.clear()
-                                    servicioAdapter.notifyDataSetChanged()
                                 }
+                                servicioAdapter.notifyDataSetChanged()
                             }
 
                             override fun onFailure(
@@ -151,29 +150,26 @@ class ConsutarFragment : Fragment() {
                                 t: Throwable
                             ) {
                                 txtCliente.text = "Error al realizar la solicitud de servicios."
-                                serviciosList.clear()
                                 servicioAdapter.notifyDataSetChanged()
                             }
                         })
                     } else {
                         txtCliente.text = "Cliente no encontrado."
-                        serviciosList.clear()
                         servicioAdapter.notifyDataSetChanged()
                     }
                 } else {
                     txtCliente.text = "Cliente no encontrado."
-                    serviciosList.clear()
                     servicioAdapter.notifyDataSetChanged()
                 }
             }
 
             override fun onFailure(call: Call<ClienteModel>, t: Throwable) {
                 txtCliente.text = "Error al realizar la solicitud del cliente."
-                serviciosList.clear()
                 servicioAdapter.notifyDataSetChanged()
             }
         })
     }
+
 
 
     override fun onDestroyView() {

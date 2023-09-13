@@ -1,4 +1,3 @@
-
 package com.example.serviteca
 
 import android.content.Context
@@ -22,12 +21,20 @@ import com.google.android.material.navigation.NavigationView
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
+
+
 class MainActivity : AppCompatActivity(), ConsutarFragment.ConsultarListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var apiService: ApiService
+    private var clienteInfo: ClienteModel? = null
+
+    fun getClienteInfo(): ClienteModel? {
+        return clienteInfo
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,3 +111,4 @@ class MainActivity : AppCompatActivity(), ConsutarFragment.ConsultarListener {
         setContentView(R.layout.no_internet_layout)
     }
 }
+
