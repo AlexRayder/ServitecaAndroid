@@ -137,9 +137,13 @@ class ConsutarFragment : Fragment() {
                                             txtCliente.text = "Señor Usuario usted no posee por el momento un sevicio en estado 'Solicitado'."
                                         }
                                     } else {
+                                        // Limpiar la lista de servicios si no hay ninguno
+                                        serviciosList.clear()
                                         txtCliente.text = "Cliente existe pero no tiene servicios."
                                     }
                                 } else {
+                                    // Limpiar la lista de servicios en caso de error
+                                    serviciosList.clear()
                                     txtCliente.text = "Error en la respuesta de la API de servicios."
                                 }
                                 servicioAdapter.notifyDataSetChanged()
@@ -149,28 +153,34 @@ class ConsutarFragment : Fragment() {
                                 call: Call<List<ServicioPrestado>>,
                                 t: Throwable
                             ) {
+                                // Limpiar la lista de servicios en caso de error
+                                serviciosList.clear()
                                 txtCliente.text = "Error al realizar la solicitud de servicios."
                                 servicioAdapter.notifyDataSetChanged()
                             }
                         })
                     } else {
+                        // Limpiar la lista de servicios si no se encuentra ningún cliente
+                        serviciosList.clear()
                         txtCliente.text = "Cliente no encontrado."
                         servicioAdapter.notifyDataSetChanged()
                     }
                 } else {
+                    // Limpiar la lista de servicios si no se encuentra ningún cliente
+                    serviciosList.clear()
                     txtCliente.text = "Cliente no encontrado."
                     servicioAdapter.notifyDataSetChanged()
                 }
             }
 
             override fun onFailure(call: Call<ClienteModel>, t: Throwable) {
+                // Limpiar la lista de servicios en caso de error
+                serviciosList.clear()
                 txtCliente.text = "Error al realizar la solicitud del cliente."
                 servicioAdapter.notifyDataSetChanged()
             }
         })
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

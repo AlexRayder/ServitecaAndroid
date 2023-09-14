@@ -1,9 +1,15 @@
 package com.example.serviteca
 
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.view.MenuItem
+import android.os.Handler
+import android.os.Looper
+import android.view.View
+import android.widget.ProgressBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -21,9 +27,6 @@ import com.google.android.material.navigation.NavigationView
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
-
-
 class MainActivity : AppCompatActivity(), ConsutarFragment.ConsultarListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -32,18 +35,28 @@ class MainActivity : AppCompatActivity(), ConsutarFragment.ConsultarListener {
     private lateinit var apiService: ApiService
     private var clienteInfo: ClienteModel? = null
 
+    private val loadingProgressBar: ProgressBar by lazy {
+        findViewById(R.id.loadingProgressBar)
+    }
+
+    private val networkChangeReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (isNetworkAvailable()) {
+                // Si la conexión se restablece, volver a cargar la vista principal
+                loadMainView()
+            } else {
+                // Si no hay conexión, mostrar la vista "No hay conexión a Internet"
+                showNoInternetView()
+            }
+        }
+    }
+
     fun getClienteInfo(): ClienteModel? {
         return clienteInfo
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Verificar la conexión a Internet
-        if (!isNetworkAvailable()) {
-            showNoInternetView()
-            return
-        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -71,6 +84,19 @@ class MainActivity : AppCompatActivity(), ConsutarFragment.ConsultarListener {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService::class.java)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // Registrar el BroadcastReceiver para la detección de cambios en la conectividad de red
+        val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(networkChangeReceiver, filter)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        // Desregistrar el BroadcastReceiver cuando la actividad se detenga
+        unregisterReceiver(networkChangeReceiver)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -108,7 +134,24 @@ class MainActivity : AppCompatActivity(), ConsutarFragment.ConsultarListener {
     }
 
     private fun showNoInternetView() {
-        setContentView(R.layout.no_internet_layout)
-    }
-}
 
+        // Mostrar la vista de "No hay conexión a Internet"
+        setContentView(R.layout.no_internet_layout)
+
+    }
+
+    private fun loadMainView() {
+        Handler(Looper.getMainLooper()).postDelayed({
+
+            if (isNetworkAvailable()) {
+                // Si hay conexión a Internet, cargar la vista principal
+                setContentView(binding.root)
+            } else {
+                // Si no hay conexión a Internet, mostrar la vista "No hay conexión a Internet"
+                showNoInternetView()
+            }
+        }, 3000) // 5 segundos
+    }
+
+
+}

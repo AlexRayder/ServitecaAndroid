@@ -69,6 +69,13 @@ class HistorialFragment : Fragment() {
             val cedula = binding.txtCedula.text.toString().trim()
             if (cedula.isNotEmpty()) {
                 consultarCliente(cedula)
+            } else {
+                val cedulaEditText = binding.txtCedula
+                val cedula = cedulaEditText.text.toString().trim()
+                if (cedula.length > 10 || cedula.length < 7) {
+                    cedulaEditText.error = "¡Por Favor Ingresa Su Documento de Identidad!"
+                }
+                servicioAdapter.clearData() // Limpiar la lista si no se ingresa una cédula
             }
         }
 
@@ -78,6 +85,15 @@ class HistorialFragment : Fragment() {
     private fun consultarCliente(cedula: String) {
         // Limpiar el contenido anterior
         binding.txtHistorial.text = ""
+        val cedulaEditText = binding.txtCedula
+        val cedula = cedulaEditText.text.toString().trim()
+        if (cedula.length > 10 || cedula.length < 7) {
+            cedulaEditText.error = "¡La cédula no es válida!\n" +
+                    "Verifique su número de cédula"
+            return
+        }
+        // Limpiar la lista antes de realizar la consulta
+        servicioAdapter.clearData()
 
         // Realiza la solicitud para obtener datos del cliente
         val callCliente = apiService.getClienteConCedula(cedula)
@@ -95,7 +111,7 @@ class HistorialFragment : Fragment() {
                         binding.txtHistorial.text = "Cliente no encontrado."
                     }
                 } else {
-                    binding.txtHistorial.text = "Error al obtener datos del cliente."
+                    binding.txtHistorial.text = "Cliente no encontrado."
                 }
             }
 

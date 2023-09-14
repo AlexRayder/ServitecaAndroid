@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,48 +8,48 @@
     tools:context=".ui.historial.HistorialFragment">
 
     <!-- Logo Images -->
-
-    <!-- Table Layout -->
-
     <ImageView
         android:id="@+id/imageViewLogo"
-        android:layout_width="445dp"
-        android:layout_height="66dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:scaleType="centerInside"
         android:src="@drawable/logonegro"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@id/tableLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.2"
-        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintWidth_percent="0.5" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="445dp"
-        android:layout_height="66dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:scaleType="centerInside"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintBottom_toTopOf="@id/tableLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.2"
-        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintWidth_percent="0.5" />
 
     <EditText
         android:id="@+id/txtCedula"
         android:layout_width="218dp"
         android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/table_border2"
         android:ems="10"
         android:hint="Digite Su Cedula:"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewHistorial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogo" />
 
     <TableLayout
         android:id="@+id/tableLayout2"
@@ -58,22 +59,11 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewLogo"
+        app:layout_constraintTop_toBottomOf="@id/txtCedula"
         app:layout_constraintWidth_percent="0.9">
 
         <!-- Header Row -->
         <TableRow android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="105dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/table_border"
-                android:gravity="center"
-                android:text="Servicio Prestado"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -100,34 +90,25 @@
                 android:layout_weight="1"
                 android:background="@drawable/table_border"
                 android:gravity="center"
-                android:text="Total"
+                android:text="Descripcion"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
         </TableRow>
     </TableLayout>
 
-    <!-- RecyclerView to display table data -->
+    <!-- Result TextView for displaying API response -->
 
     <TextView
         android:id="@+id/txtHistorial"
-        android:layout_width="225dp"
+        android:layout_width="0dp"
         android:layout_height="142dp"
+        android:layout_marginTop="124dp"
+        android:gravity="center"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/buttonConsultarHistorial"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCedula" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewHistorial"
-        android:layout_width="277dp"
-        android:layout_height="296dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonConsultarHistorial"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
-        app:layout_constraintVertical_bias="0.746"
-        app:layout_constraintWidth_percent="0.9" />
+        app:layout_constraintTop_toBottomOf="@id/txtCedula" />
 
     <Button
         android:id="@+id/buttonConsultarHistorial"
@@ -137,5 +118,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHistorial"
+
+        android:layout_width="364dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConsultarHistorial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tableLayout2"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent="0.9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
