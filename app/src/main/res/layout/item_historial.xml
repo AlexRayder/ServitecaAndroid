@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="8dp"
-
     tools:context=".ui.consultar.ConsutarFragment">
 
     <TextView
@@ -14,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Servicio Prestado"
-
+        android:fontFamily="@font/nunito_regular"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp" />
 
@@ -23,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Fecha"
+        android:fontFamily="@font/nunito_regular"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp" />
 
@@ -31,12 +31,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Estado"
+        android:fontFamily="@font/nunito_regular"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/totalTextView"
         android:layout_width="match_parent"
+        android:fontFamily="@font/nunito_regular"
         android:layout_height="wrap_content"
         android:text="Total" />
 

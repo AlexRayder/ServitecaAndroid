@@ -45,56 +45,14 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/table_border2"
         android:ems="10"
+        android:fontFamily="@font/nunito_regular"
         android:hint="Digite Su Cedula:"
         android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewHistorial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageViewLogo" />
 
-    <TableLayout
-        android:id="@+id/tableLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtCedula"
-        app:layout_constraintWidth_percent="0.9">
-
-        <!-- Header Row -->
-        <TableRow android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/table_border"
-                android:gravity="center"
-                android:text="Fecha"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/table_border"
-                android:gravity="center"
-                android:text="Estado"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/table_border"
-                android:gravity="center"
-                android:text="Descripcion"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-        </TableRow>
-    </TableLayout>
 
     <!-- Result TextView for displaying API response -->
 
@@ -102,7 +60,7 @@
         android:id="@+id/txtHistorial"
         android:layout_width="0dp"
         android:layout_height="142dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="88dp"
         android:gravity="center"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,6 +82,7 @@
 
         android:layout_width="364dp"
         android:layout_height="300dp"
+        android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonConsultarHistorial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"

@@ -25,7 +25,9 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="El Impulso Que Necesita Tu Vehículo"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:fontFamily="@font/montserrat_bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 

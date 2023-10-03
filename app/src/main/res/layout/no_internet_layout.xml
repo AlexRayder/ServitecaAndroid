@@ -7,12 +7,12 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="372dp"
-        android:layout_height="136dp"
+        android:layout_width="409dp"
+        android:layout_height="137dp"
+        android:fontFamily="@font/montserrat_bold"
         android:text="No tienes Conexción A INTERNET"
         android:textAlignment="center"
-        android:textSize="40dp"
-        android:textStyle="bold|italic"
+        android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
