@@ -24,7 +24,7 @@ class DetalleServicioActivity : AppCompatActivity() {
         if (servicioId != -1) {
             // Configura Retrofit
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://alexxoo.pythonanywhere.com/")
+                .baseUrl("http://servitecaopita2.pythonanywhere.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
@@ -47,7 +47,10 @@ class DetalleServicioActivity : AppCompatActivity() {
 
                             for (detalleServicio in detalleServicios) {
                                 serviciosStringBuilder.append("Servicio: ${detalleServicio.detServicio}\n")
-                                serviciosStringBuilder.append("Empleado: ${detalleServicio.detEmpleado}\n\n")
+                                serviciosStringBuilder.append("Empleado: ${detalleServicio.detEmpleado}\n")
+                                serviciosStringBuilder.append("Estado Servicio: ${detalleServicio.detEstadoServicio}\n")
+                                serviciosStringBuilder.append("Observacion Técnico: ${detalleServicio.detObservaciones}\n\n")
+
                             }
 
                             // Actualiza el TextView con los detalles de todos los servicios

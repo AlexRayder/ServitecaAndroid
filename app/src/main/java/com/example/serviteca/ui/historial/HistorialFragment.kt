@@ -30,7 +30,7 @@ class HistorialFragment : Fragment() {
 
     // Retrofit
     private val apiService: ApiServiceHistorial by lazy {
-        val BASE_URL = "https://alexxoo.pythonanywhere.com/"
+        val BASE_URL = "http://servitecaopita2.pythonanywhere.com/"
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

@@ -32,7 +32,7 @@ class ConsutarFragment : Fragment() {
     private lateinit var txtCliente: TextView
 
     private val apiService: ApiService by lazy {
-        val BASE_URL = "https://alexxoo.pythonanywhere.com/"
+        val BASE_URL = "http://servitecaopita2.pythonanywhere.com/"
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
