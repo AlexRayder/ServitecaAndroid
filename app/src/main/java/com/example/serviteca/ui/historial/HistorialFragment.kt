@@ -123,13 +123,10 @@ class HistorialFragment : Fragment() {
 
 
     private fun mostrarInformacionClienteDialog(clienteInfo: ClienteModel) {
+        val nombreCompleto = "${clienteInfo.cliPersona_info.perNombres} ${clienteInfo.cliPersona_info.perApellidos}"
         val dialog = AlertDialog.Builder(requireContext())
-            .setTitle("Datos del Cliente")
-            .setMessage("Nombre: ${clienteInfo.cliPersona_info.perNombres}\n" +
-                    "Apellidos: ${clienteInfo.cliPersona_info.perApellidos}\n" +
-                    "Correo: ${clienteInfo.cliPersona_info.perCorreo}\n" +
-                    "Dirección: ${clienteInfo.cliDireccion}\n" +
-                    "Número de Celular: ${clienteInfo.cliPersona_info.perNumeroCelular}")
+            .setTitle("Bienvenido Señor o Señora")
+            .setMessage("Nombre Completo: $nombreCompleto")
             .setPositiveButton("Cerrar") { _, _ ->
                 // Acción cuando el usuario presiona el botón "Cerrar"
             }
@@ -137,6 +134,7 @@ class HistorialFragment : Fragment() {
 
         dialog.show()
     }
+
 
     private fun obtenerServiciosDelCliente(cedula: String) {
         // Realiza la solicitud para obtener los servicios del cliente
@@ -164,7 +162,7 @@ class HistorialFragment : Fragment() {
                         }
                     } else {
                         // Maneja el caso de que no haya servicios o no cumplan el criterio
-                        binding.txtHistorial.text = "Cliente existe pero no tiene servicios."
+                        binding.txtHistorial.text = "Señor Usuario como usted todavía no posee servicios con nuestra serviteca, entonces por el momento no podemos mostrar tu historial"
                         servicioAdapter.clearData()
                     }
                 } else {

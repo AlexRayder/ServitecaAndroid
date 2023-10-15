@@ -134,12 +134,12 @@ class ConsutarFragment : Fragment() {
                                         serviciosList.clear()
                                         serviciosList.addAll(filteredServicios)
                                         if (filteredServicios.isEmpty()) {
-                                            txtCliente.text = "Señor Usuario usted no posee por el momento un sevicio en estado 'Solicitado'."
+                                            txtCliente.text = "Señor Usuario usted no posee por el momento un servicio en estado 'Solicitado'."
                                         }
                                     } else {
                                         // Limpiar la lista de servicios si no hay ninguno
                                         serviciosList.clear()
-                                        txtCliente.text = "Cliente existe pero no tiene servicios."
+                                        txtCliente.text = "Señor Usuario usted no posee por el momento un servicio con nuestra serviteca."
                                     }
                                 } else {
                                     // Limpiar la lista de servicios en caso de error

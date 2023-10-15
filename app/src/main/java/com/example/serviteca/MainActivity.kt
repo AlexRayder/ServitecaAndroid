@@ -111,13 +111,10 @@ class MainActivity : AppCompatActivity(), ConsutarFragment.ConsultarListener {
     }
 
     private fun mostrarInformacionClienteDialog(clienteInfo: ClienteModel) {
+        val nombreCompleto = "${clienteInfo.cliPersona_info.perNombres} ${clienteInfo.cliPersona_info.perApellidos}"
         val dialog = AlertDialog.Builder(this@MainActivity)
-            .setTitle("Datos del Cliente")
-            .setMessage("Nombre: ${clienteInfo.cliPersona_info.perNombres}\n" +
-                    "Apellidos: ${clienteInfo.cliPersona_info.perApellidos}\n" +
-                    "Correo: ${clienteInfo.cliPersona_info.perCorreo}\n" +
-                    "Dirección: ${clienteInfo.cliDireccion}\n" +
-                    "Número de Celular: ${clienteInfo.cliPersona_info.perNumeroCelular}")
+            .setTitle("Bienvenido Señor o Señora")
+            .setMessage("$nombreCompleto")
             .setPositiveButton("Cerrar") { _, _ ->
                 // Acción cuando el usuario presiona el botón "Cerrar"
             }
@@ -125,6 +122,7 @@ class MainActivity : AppCompatActivity(), ConsutarFragment.ConsultarListener {
 
         dialog.show()
     }
+
 
     private fun isNetworkAvailable(): Boolean {
         val connectivityManager =
