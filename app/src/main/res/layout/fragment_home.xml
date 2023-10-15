@@ -13,14 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nuestros Servicios"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:fontFamily="@font/montserrat_bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.024" />
-
 
     <!-- ScrollView para el contenido de las cartas -->
     <ScrollView
@@ -32,7 +30,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
-
 
         <!-- LinearLayout vertical para organizar las cartas -->
         <LinearLayout
@@ -63,7 +60,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/bujias" />
+                        android:src="@drawable/cambiobujias" />
 
                     <!-- Título de la Carta 1 -->
                     <TextView
@@ -104,7 +101,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Reparación electrónica menores"
+                        android:text="Reparación Electrónica Menores"
                         android:textSize="30sp"
                         android:textAlignment="center"
                         android:fontFamily="@font/nunito_regular" />
@@ -134,7 +131,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/balanceo" />
+                        android:src="@drawable/alineacion" />
 
                     <!-- Título de la Carta 3 -->
                     <TextView
@@ -156,8 +153,6 @@
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp">
 
-            </androidx.cardview.widget.CardView>
-
                 <!-- Contenido de la Carta 4 -->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -171,7 +166,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/aceite" />
+                        android:src="@drawable/cambioaceite" />
 
                     <!-- Título de la Carta 4 -->
                     <TextView
@@ -181,6 +176,7 @@
                         android:textSize="30sp"
                         android:fontFamily="@font/nunito_regular" />
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <!-- Carta 5 -->
             <androidx.cardview.widget.CardView
@@ -211,7 +207,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cambio de pastillas de freno"
+                        android:text="Cambio de Pastillas de Freno"
                         android:textSize="30sp"
                         android:textAlignment="center"
                         android:fontFamily="@font/nunito_regular" />
@@ -247,7 +243,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cambio de amortiguadores"
+                        android:text="Cambio de Amortiguadores"
                         android:textSize="30sp"
                         android:textAlignment="center"
                         android:fontFamily="@font/nunito_regular" />
@@ -283,7 +279,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Revición de luces"
+                        android:text="Revisión de Luces"
                         android:textSize="30sp"
                         android:fontFamily="@font/nunito_regular" />
                 </LinearLayout>
@@ -318,15 +314,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rectificación de rines"
+                        android:text="Rectificación de Rines"
                         android:textSize="30sp"
                         android:fontFamily="@font/nunito_regular" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-
-
-            <!-- Carta 8 -->
+            <!-- Carta 9 -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView9"
                 android:layout_width="match_parent"
@@ -355,15 +349,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Revición electrónica"
+                        android:text="Revisión Electrónica"
                         android:textSize="30sp"
                         android:fontFamily="@font/nunito_regular" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
-
-
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-

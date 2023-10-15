@@ -26,10 +26,7 @@
                 android:id="@+id/nav_nosotros"
                 android:icon="@drawable/nav_info"
                 android:title="Nosotros" />
-            <item
-                android:id="@+id/logout"
-                android:icon="@drawable/nav_logout"
-                android:title="Salir"/>
+
         </menu>
     </item>
 </menu>
